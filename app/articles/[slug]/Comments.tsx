@@ -1,23 +1,8 @@
-'use client'
-import {
-  Card,
-  CardBody,
-  StackDivider,
-  VStack,
-  Text,
-  Box,
-  Avatar,
-  Flex,
-} from "../../components/common/";
+"use client";
+import { Avatar, Flex, VStack, Text } from "@chakra-ui/react";
 import { Comment } from "../../types";
 
-export default async function Comments({
-  commentPromise,
-}: {
-  commentPromise: Promise<Comment[]>;
-}) {
-  const comments = await commentPromise;
-
+export default function Comments({ comments }: { comments: Comment[] }) {
   if (comments.length === 0) {
     return (
       <Text as="p" fontSize="md">
@@ -26,13 +11,7 @@ export default async function Comments({
     );
   }
   return (
-    <VStack
-      divider={<StackDivider borderColor="gray.200" />}
-      spacing={4}
-      as="ul"
-      align="stretch"
-      px={4}
-    >
+    <VStack spacing={4} as="ul">
       {comments.map((comment) => (
         <CommentItem key={comment.id} comment={comment} />
       ))}
@@ -49,6 +28,7 @@ function CommentItem({ comment }: { comment: Comment }) {
         src={comment.author.avatarUrl}
         mr={4}
       />
+
       <Text fontSize="sm">{comment.body}</Text>
     </Flex>
   );

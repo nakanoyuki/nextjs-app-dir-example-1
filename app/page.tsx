@@ -4,7 +4,7 @@ import ArticleList from "./components/ArticleList";
 
 
 async function getArticles() {
-  const res = await fetch("http://localhost:3002/api/articles", {
+  const res = await fetch("http://localhost:3000/api/articles", {
     // 新着の記事の一覧を取得しているので、データの更新が頻繁に行われる可能性がある。fetch を実行するたびに新しいデータを取得するようにする
     cache: "no-store",
   });
